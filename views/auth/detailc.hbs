@@ -1,0 +1,29 @@
+<h2> {{role}}</h2>
+<hr>
+<img src="{{photoUrl}}" alt="imagen" width="200">
+<p>Usuario:{{username}}</p>
+<hr>
+<p>Rol:{{role}}</p>
+<hr>
+<p>Direccion:{{address}}</p>
+<hr>
+<p>Email:{{email}}</p>
+<hr>
+<p>Telefono:{{phoneNumber}}</p>
+<hr>
+<br>
+<a href="/auth/update/{{_id}}">Modificar tu Perfil</a>
+<p>Peticiones:</p>
+{{#each peticiones}}
+<p>{{this.titulo}}| <a href="/auth/detallePet/{{this._id}}">Da click para detalles de este trabajo solicitado</a></p>
+{{/each}}
+<p>Cotizaciones:</p>
+{{#each cotizaciones}}
+<p>{{this.titulo}}| <a href="/auth/detalleCot/{{this._id}}">Da click para detalles de esta cotización que te ha llegado</a></p>
+{{/each}}
+<hr>
+<a href="/auth/listae">Pide un servicio de Electricidad</a>
+<hr>
+<a href="/auth/listap">Pide un servicio de Plomeria</a>
+<hr>
+<a href="/auth/logout">Cerrar Sesion</a>

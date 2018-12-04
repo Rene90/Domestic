@@ -1,0 +1,16 @@
+<h2 id="ti">Electricistas cerca de ti</h2>
+<div class="tec">
+{{#each elec}}
+    <div class="card">
+    <h3>{{this.username}}</h3>
+    <p>Calificacion</p>
+    <span>{{this.rating}}</span>
+    <p>Trabajos realizados</p>
+    {{#each peticiones}}
+    <p>{{this.titulo}}</p><br>
+    {{/each}}
+    <a href="/auth/peticion/{{this._id}}">Realizarle una peticion</a>
+
+{{/each}}
+</div>
+<a href="/auth/logout">Cerrar Sesion</a>

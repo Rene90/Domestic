@@ -1,0 +1,142 @@
+@font-face {
+  font-family: mirya;
+  src: url("../MYRIADPRO-REGULAR.otf");
+}
+*{
+  font-family: mirya;
+  padding:0;
+  margin: 0;
+  
+}
+body {
+  padding: 0px;
+  margin:0px;
+  font: 14px mirya;
+  
+  height:100vh;
+  
+}
+
+h1{
+  font-weight:bold;
+  font-size: 45px;
+}
+h2{
+  font-size: 45px;
+  color:#51B25B;
+}
+
+a {
+  color: #00B7FF;
+}
+header{
+  width:100%;
+  height:110px;
+  background-color: #2867A4;
+  color: white;
+ 
+}
+header h1{
+  font-size: 25px;
+
+
+}
+#lista{
+ width:100%;
+ height:50%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ 
+}
+#lista li{
+  display: inline-block;
+  font-family: mirya;
+
+
+}
+footer{
+  height:80px;
+
+  width:100%;
+  
+  background-color: #51B25B;
+  color:#5B4848;
+  padding-left: 50px;
+  padding-top:25px;;
+}
+#home{
+  width:80%;
+  margin: 20px auto;
+  height: 60px;
+  text-align: center;
+  color:#51B25B;
+}
+.contenedor{
+  height: 400px;
+  padding-top:20px;
+  width:80%;
+  margin: 0 auto;
+  text-align: center;
+  color:#51B25B;
+  display: flex;
+  justify-content: space-between
+}
+span{
+  width: 80%;
+  margin:15px auto;
+  text-align: center;
+  color:#51B25B;
+
+}
+.siguiente{
+  display: block;
+  text-decoration: none;
+  padding-top:20px;
+  width:200px;
+  height:40px;
+  border: 1px solid black;
+  border-radius:10px;
+  font-size: 35px;
+  background-color: white;
+  color:#51B25B;
+}
+input{
+  height:60px;
+  text-align: left;
+  font-size: 15px;
+  border-radius:10px;
+  font-size: 35px;
+  background-color: white;
+  color:#51B25B;
+}
+select{
+  height:60px;
+  width:200px;
+  font-size: 35px;
+  background-color: white;
+  color:#51B25B;
+
+}
+.tec{
+  width:80%;
+  margin: 0 auto;
+  height:500px;
+  color:#51B25B;
+  
+  
+
+}
+.card{
+  width: 100%;
+  margin:50px 0;
+  height:100px;
+  border: 1px solid #51B25B;
+}
+#ti{
+  text-align: center;
+}
+
+
+
+

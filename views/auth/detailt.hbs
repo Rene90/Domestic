@@ -1,0 +1,27 @@
+<h2>{{user.role}}</h2>
+<hr>
+<img src="{{user.photoUrl}}" alt="imagen" width="200">
+<p>Usuario:{{user.username}}</p>
+<hr>
+<p>Rol:{{user.role}}</p>
+<hr>
+<p>Direccion:{{user.address}}</p>
+<hr>
+<p>Email:{{user.email}}</p>
+<hr>
+<p>Telefono:{{user.phoneNumber}}</p>
+<hr>
+<br>
+<a href="/auth/update/{{user._id}}">Modificar tu Perfil</a>
+<p>Peticiones:</p>
+{{#each user.peticiones}}
+<p>{{this.titulo}}| <a href="/auth/detallePet/{{this._id}}">Da click para detalles de este trabajo solicitado</a> | <a href="/auth/cotizacion/{{this._id}}">Enviar cotización</a> </p>
+
+{{/each}}
+<p>Cotizaciones:</p>
+{{#each user.cotizaciones}}
+<p>{{this.titulo}}| <a href="/auth/detalleCot/{{this._id}}">Da click para detalles de esta cotización que has realizado</a></p>
+{{/each}}
+<hr>
+<a href="/auth/logout">Cerrar Sesion</a>
+

@@ -1,0 +1,18 @@
+<h1>Llena el formulario de tu petición</h1>
+<p>{{message}}</p>
+
+<form  action="{{action}}" id="form" method="POST" enctype="multipart/form-data">
+  <label for="titulo">Título de la petición</label>
+  <input type="text" name="titulo" value="{{peticion.titulo}}">
+  <hr>
+  <label for="content">Describe tu problema</label>
+ <textarea name="content" id="" cols="30" rows="10"></textarea>
+ 
+  <hr>
+  <label for="photo">Sube la foto de tu problema</label>
+   <input type="file"  name="photo" >
+   <hr>
+ 
+  
+  <input type="submit" placeholder="Envia">
+</form>

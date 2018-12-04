@@ -1,0 +1,20 @@
+<h1>Realiza la cotización</h1>
+<p>Trabajo solicitado {{peti.titulo}}</p>
+
+
+<form  action="{{action}}" id="form" method="POST" >
+  <label for="titulo">Título de la cotizacion</label>
+  <input type="text" name="titulo">
+  <hr>
+  <label for="content">Añade descripcion a tu cotización</label>
+ <textarea name="content" id="" cols="30" rows="10"></textarea>
+ <hr>
+ <label for="dateService">Escoge fecha y hora de servicio</label>
+ <input type="datetime-local" name="dateService">
+  <hr>
+  <label for="precio"></label>
+  <input type="number" name="precio">
+ 
+  
+  <input type="submit" placeholder="Envia">
+</form>

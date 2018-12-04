@@ -1,0 +1,36 @@
+<h1>Registra un usuario</h1>
+<p>{{message}}</p>
+
+<form  action="{{action}}" id="form" method="POST" enctype="multipart/form-data">
+  <label for="username">Usuario</label>
+  <input type="text" name="username" value="{{user.username}}">
+  <hr>
+  <label for="role">Rol</label>
+  <select name="role">
+  <option value="Electricista">Electricista</option> 
+  <option value="Plomero">Plomero</option>
+  <option value="Client">Cliente</option>
+  
+</select>
+  <hr>
+  <label for="address">Dirección</label>
+  <input type="text" name="address" value="{{user.address}}">
+  <hr>
+  <label for="phoneNumber">Teléfono</label>
+  <input type="number" name="phoneNumber" value="{{user.phoneNumber}}">
+<hr>
+  <label for="email">Email</label>
+  <input type="email" name="email" value="{{user.email}}">
+  <hr>
+  <label for="photo">Sube tu foto</label>
+  <input type="file"  name="photo" >
+  <hr>
+  <label for="password">Password</label>
+  <input type="password" name="password" value="{{user.password}}">
+  <hr>
+  
+  <input type="submit">
+</form>
+
+
+
