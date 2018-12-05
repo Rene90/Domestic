@@ -10,6 +10,7 @@ const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 const {welcomeMail} =require('../passport/mailer')
+const uploadCloud =  require('../passport/cloudinary')
 
 //middlewares
 function checkRoles(role) {
@@ -56,7 +57,7 @@ router.get("/login", (req, res, next) => {
   
   
 
-  router.post("/signup",upload.single('photo'), (req, res, next) => {
+  router.post("/signup",uploadCloud.single('photo'), (req, res, next) => {
      
     const username = req.body.username;
     const password = req.body.password;
@@ -160,7 +161,7 @@ router.get("/update/:id",ensureLoggedIn(),(req,res,next)=>{
 })
 
 
-router.post('/update/:id', upload.single('photo'),(req, res, next) => {
+router.post('/update/:id', uploadCloud.single('photo'),(req, res, next) => {
     
     const newbody = {
       username:req.body.username,
@@ -221,7 +222,7 @@ router.get("/peticion/:id",checkClient,(req,res,next)=>{
     const action = `/auth/peticion/${id}`
     res.render('peticion',{action})
 })
-router.post("/peticion/:id",upload.single('photo'),(req,res,next)=>{
+router.post("/peticion/:id",uploadCloud.single('photo'),(req,res,next)=>{
     const {id} = req.params
     const peticion = new Peticion({
         titulo: req.body.titulo,
