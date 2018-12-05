@@ -1,3 +1,4 @@
+<div class="contenedorRL">
 <h2> {{role}}</h2>
 <hr>
 <img src="{{photoUrl}}" alt="imagen" width="200">
@@ -15,7 +16,7 @@
 <a href="/auth/update/{{_id}}">Modificar tu Perfil</a>
 <p>Peticiones:</p>
 {{#each peticiones}}
-<p>{{this.titulo}}| <a href="/auth/detallePet/{{this._id}}">Da click para detalles de este trabajo solicitado</a></p>
+<p>{{this.titulo}}| <a href="/auth/detallePet/{{this._id}}">Da click para detalles de este trabajo solicitado</a> | <a href="/auth/borrarPet/{{this._id}}">Borrar petición</a></p>
 {{/each}}
 <p>Cotizaciones:</p>
 {{#each cotizaciones}}
@@ -27,3 +28,4 @@
 <a href="/auth/listap">Pide un servicio de Plomeria</a>
 <hr>
 <a href="/auth/logout">Cerrar Sesion</a>
+</div>

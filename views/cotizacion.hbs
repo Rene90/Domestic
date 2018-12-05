@@ -1,5 +1,6 @@
-<h1>Realiza la cotización</h1>
-<p>Trabajo solicitado {{peti.titulo}}</p>
+<div class="contenedorRL">
+<h2>Realiza la cotización</h2>
+<h3>Trabajo solicitado {{peti.titulo}}</h3>
 
 
 <form  action="{{action}}" id="form" method="POST" >
@@ -12,9 +13,10 @@
  <label for="dateService">Escoge fecha y hora de servicio</label>
  <input type="datetime-local" name="dateService">
   <hr>
-  <label for="precio"></label>
-  <input type="number" name="precio">
+  <label for="precio">Precio</label>
+  <input type="number" name="precio"><br>
  
   
-  <input type="submit" placeholder="Envia">
+  <input type="submit" class="boton" value="Envia">
 </form>
+</div>

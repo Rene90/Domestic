@@ -1,14 +1,14 @@
-
+<div class ="contenedorRL">
 <h2>Login</h2>
 
 <form action="/auth/login" method="POST" id="form-container">
   <label for="username">Username</label>
-  <input id="username" type="text" name="username" placeholder="JonSnow">
+  <input id="username" type="text" name="username" placeholder="Tu nombre">
 
   <br><br>
 
   <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
+  <input id="password" type="password" name="password" placeholder="Tu password">
   <br>
   {{#if message }}
     <div class="error-message">{{ message }}</div>
@@ -16,10 +16,11 @@
 
   <br><br>
 
-  <button type="submit">Login</button>
+  <button type="submit" class="boton">Login</button>
 
-  <p class="account-message">
-    Don't have an account yet?
-    <a href="/auth/signup">Signup</a>
+  <p class="account">
+    ¿No tienes cuenta?
+    <a href="/auth/signup">Registrate</a>
   </p>
 </form>
+</div>

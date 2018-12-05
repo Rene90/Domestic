@@ -1,16 +1,19 @@
+<div class="contenedorTrab">
 <h2 id="ti">Plomeros cerca de ti</h2>
-<div class="tec">
+
 {{#each plom}}
     <div class="card">
-    <h3>{{this.username}}</h3>
+    <h3>{{this.username}}</h3><br>
+    <img src="{{this.photoUrl}}" alt="imagen" width="200px"><br>
     <p>Calificacion</p>
     <span>{{this.rating}}</span>
-    <p>Trabajos realizados</p>
+    <h4>Trabajos realizados</h4>
     {{#each peticiones}}
-    <p>{{this.titulo}}</p><br>
+    <p>{{this.titulo}}</p>
     {{/each}}
     <a href="/auth/peticion/{{this._id}}">Realizarle una peticion</a>
-
+    </div>
 {{/each}}
-</div>
+
 <a href="/auth/logout">Cerrar Sesion</a>
+</div>

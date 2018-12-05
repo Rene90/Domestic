@@ -1,3 +1,4 @@
+<div class="contenedorRL">
 <h2>{{user.role}}</h2>
 <hr>
 <img src="{{user.photoUrl}}" alt="imagen" width="200">
@@ -20,8 +21,8 @@
 {{/each}}
 <p>Cotizaciones:</p>
 {{#each user.cotizaciones}}
-<p>{{this.titulo}}| <a href="/auth/detalleCot/{{this._id}}">Da click para detalles de esta cotización que has realizado</a></p>
+<p>{{this.titulo}}| <a href="/auth/detalleCot/{{this._id}}">Da click para detalles de esta cotización que has realizado</a> | <a href="/auth/borrarCot/{{this._id}}">Borrar cotizacion</a></p>
 {{/each}}
 <hr>
 <a href="/auth/logout">Cerrar Sesion</a>
-
+</div>

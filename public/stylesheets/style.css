@@ -7,11 +7,20 @@
   padding: 0;
   margin: 0; }
 
+  html{
+    min-height: 100%;
+    position: relative;
+  }
 body {
   padding: 0px;
   margin: 0px;
+  padding-bottom: 60px;
   font: 14px mirya;
-  height: 100vh; }
+  
+  position: relative;
+
+}
+  
 
 h1 {
   font-weight: bold;
@@ -28,29 +37,63 @@ header {
   width: 100%;
   height: 110px;
   background-color: #2867A4;
-  color: white; }
+  color: white;
+  position: relative;
+
+ }
 
 header h1 {
-  font-size: 25px; }
+  font-size: 25px;
+  position: absolute;
+  left: 10px;
+  top:10px;
+  
+ }
 
 #lista {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
   height: 50%;
   display: flex;
   justify-content: space-between;
-  align-items: center; }
+  align-items: center; 
+  position: absolute;
+  top:30px;
+  left:60px;
+  
+}
 
 #lista li {
   display: inline-block;
-  font-family: mirya; }
+  font-family: mirya;
+  
+ }
+ #lista a{
+   text-decoration: none;
+   color:white;
+   cursor: pointer;
+   font-size: 18px;
+ }
 
 footer {
-  height: 80px;
+  height: 60px;
   width: 100%;
-  background-color: #51B25B;
+  background-color: rgba(13, 202, 114, 0.568);
+   
   color: #5B4848;
   padding-left: 50px;
-  padding-top: 25px; }
+  
+  font-size: 18px;
+  position: absolute;
+  bottom:0
+}
+footer a{
+  text-decoration: none;
+  color:#5B4848;
+  position: absolute;
+  right: 150px;
+
+}
 
 #home {
   width: 80%;
@@ -60,14 +103,33 @@ footer {
   color: #51B25B; }
 
 .contenedor {
-  height: 400px;
-  padding-top: 20px;
-  width: 80%;
-  margin: 0 auto;
+ height:100vh;
+  
+  width: 100%;
+  background-image:url('https://s24193.pcdn.co/wp-content/uploads/2017/03/fewer-women-live-at-home-Entity-1320x720.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-origin: content-box;
+  
   text-align: center;
   color: #51B25B;
+  }
+.promocion{
+  width:50%;
+  height: 100%;
+  float:right;
   display: flex;
-  justify-content: space-between; }
+  flex-flow: column;
+  text-align: center;
+ 
+  justify-content: center; 
+}
+.promocion h2{
+ margin-top: 15px;
+ margin-bottom:10px;
+ color:#2867A4;
+}
+
 
 span {
   width: 80%;
@@ -76,16 +138,20 @@ span {
   color: #51B25B; }
 
 .siguiente {
-  display: block;
+ 
   text-decoration: none;
   padding-top: 20px;
+  margin-bottom: 15px;
+  margin-left:153px;
   width: 200px;
   height: 40px;
-  border: 1px solid black;
+  border: 3px solid #2867A4;
   border-radius: 10px;
   font-size: 35px;
   background-color: white;
-  color: #51B25B; }
+  color: #51B25B; 
+  
+}
 
 input {
   height: 60px;
@@ -104,18 +170,130 @@ select {
   color: #51B25B; }
 
 .tec {
-  width: 80%;
-  margin: 0 auto;
-  height: 500px;
+  width: 100%;
+  
+  
   color: #51B25B; }
 
 .card {
-  width: 100%;
-  margin: 50px 0;
-  height: 100px;
-  border: 1px solid #51B25B; }
+  width: 80%;
+  margin: 50px auto;
+  padding:8px 0;
+  
+  font-size:20px;
+  color: #2867A4;
+  border: 2px solid #51B25B;
+  border-radius:8px;
+ }
+ .card p{
+   margin:3px 0;
+ }
+ .card a{
+  text-decoration: none;
+  font-size:20px;
+  color: rgb(163, 89, 39);
+ }
 
 #ti {
   text-align: center; }
+
+.contenedorRL{
+    width:40%;
+    margin:15px auto;
+    text-align: center;
+    border: 5px solid #51B25B;
+    border-radius: 8px;
+    display:block;
+    
+   }
+.contenedorRL h3{
+  font-size:25px;
+  color: #2867A4;
+}
+.contenedorRL input{
+  font-size:25px;
+  margin:20px 0;
+
+}
+.contenedorRL select{
+  font-size:25px;
+
+}
+.contenedorRL label{
+  font-size:20px;
+  color: #2867A4;
+  
+}
+.subarchivo {
+  width:50%;
+  font-size:10px;
+  padding-top: 5px;
+  
+}
+.boton{
+  width: 30%;
+  height:30px;
+  font-family: mirya;
+  font-size: 18px;
+  color:#2867A4;
+  background-color: #51B25B;
+  border:2px solid #2867A4;
+  border-radius:8px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+.account, .account a{
+  text-decoration: none;
+  font-family: mirya;
+  font-size: 18px;
+  color:#2867A4;
+
+
+}
+.contenedorRL p{
+  font-family: mirya;
+  font-size: 18px;
+  color:#2867A4;
+  margin: 8px 0;
+
+}
+.contenedorRL img{
+  margin-top: 8px;
+}
+.contenedorRL a{
+  text-decoration: none;
+  font-family: mirya;
+  font-size: 18px;
+  color:rgb(163, 89, 39);
+}
+.contenedorTrab{
+  width: 80%;
+  margin: 10px auto;
+  text-align: center;
+  border: 3px solid #51B25B;
+  
+  padding: 0 10px;
+}
+.contenedorTrab a{
+  text-decoration: none;
+  font-size:20px;
+  color: rgb(163, 89, 39);
+  
+}
+.aviso{
+  list-style-type: none;
+  width:70%;
+  color:#2867A4;
+}
+.aviso h1{
+  color: #51B25B;
+ 
+}
+.aviso ul{
+  list-style-type: none;
+}
+
+
+
 
 /*# sourceMappingURL=style.css.map */

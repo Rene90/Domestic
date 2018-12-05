@@ -33,7 +33,14 @@ const UserSchema =  new Schema({
   peticiones:[{
       type:Schema.Types.ObjectId,
       ref:'Peticion'
-  }]
+  }],
+  location:{
+    type:{
+      type:String,
+      default:"Point"
+    },
+    coordinates:[Number]
+  }
  
   
 }, {

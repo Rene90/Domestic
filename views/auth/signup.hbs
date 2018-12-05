@@ -1,4 +1,6 @@
-<h1>Registra un usuario</h1>
+<div class="contenedorRL">
+
+<h2>Registra un usuario</h2>
 <p>{{message}}</p>
 
 <form  action="{{action}}" id="form" method="POST" enctype="multipart/form-data">
@@ -22,15 +24,21 @@
   <label for="email">Email</label>
   <input type="email" name="email" value="{{user.email}}">
   <hr>
-  <label for="photo">Sube tu foto</label>
-  <input type="file"  name="photo" >
+  
+  <label for="photo" >Sube tu foto</label>
+  <input type="file" id="file_1" class="subarchivo"  name="photo" >
+  <input type="hidden" name="lat" id="lat" value="{{place.location.coordinates.[1]}}">
+  <input type="hidden" name="lng" id="lng" value="{{place.location.coordinates.[0]}}">
+
+  
+ 
   <hr>
   <label for="password">Password</label>
   <input type="password" name="password" value="{{user.password}}">
   <hr>
   
-  <input type="submit">
+  <input class="boton" value="Registrarse"type="submit">
 </form>
-
+</div>
 
 

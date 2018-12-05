@@ -9,6 +9,7 @@ const upload   = multer ({dest:'./public/pics'})
 const { ensureLoggedIn, ensureLoggedOut } = require('connect-ensure-login');
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
+const {welcomeMail} =require('../passport/mailer')
 
 //middlewares
 function checkRoles(role) {
@@ -178,14 +179,14 @@ router.post('/update/:id', upload.single('photo'),(req, res, next) => {
     }).catch(e=>next(e))
   });
 router.get("/listae",checkClient,(req,res,next)=>{
-    User.find({role:"Electricista"})
+    User.find({role:"Electricista"}).populate('peticiones')
     .then(elec=>{
         res.render('electricistas',{elec})
     }).catch(e=>next(e))
 
 })
 router.get("/listap",checkClient,(req,res,next)=>{
-    User.find({role:"Plomero"})
+    User.find({role:"Plomero"}).populate('peticiones')
     .then(plom=>{
         res.render('plomeros',{plom})
     }).catch(e=>next(e))
@@ -209,12 +210,16 @@ router.post("/peticion/:id",upload.single('photo'),(req,res,next)=>{
     Peticion.create(peticion)
     .then(peticion=>{
         const pet = peticion
+       
         
         User.findByIdAndUpdate(id,{$push:{peticiones:pet._id}})
         .then(result=>{
             console.log(pet)
+            
             User.findByIdAndUpdate(req.user._id,{$push:{peticiones:pet._id}})
             .then(resul=>{
+                var message = `El usuario ${resul.username} ha solicitado un trabajo con usted`
+                welcomeMail(result.email,message)
                 res.redirect(`/auth/detailc/${req.user._id}`)
             }).catch(e=>next(e))
             
@@ -281,6 +286,8 @@ router.post("/cotizacion/:id",(req,res,next)=>{
             
             User.findByIdAndUpdate(cid,{$push:{cotizaciones:cot._id}})
             .then(resul=>{
+                var message = `El usuario ${result.username} ha respondido a una solicitud que usted hizo`
+                welcomeMail(resul.email,message)
                 res.redirect(`/auth/detailt/${req.user._id}`)
             }).catch(e=>next(e))
             
@@ -321,6 +328,20 @@ router.get('/detalleCot/:id',ensureLoggedIn(),(req,res,next)=>{
     }).catch(e=>next(e))
 
 })
+router.get('/borrarCot/:id', ensureLoggedIn(), (req, res, next) => {
+    Cotizacion.findByIdAndRemove(req.params.id)
+
+    .then(place=>{
+      res.redirect(`/auth/detailt/${req.user._id}`)
+    }).catch(e=>next(e))
+  });
+  router.get('/borrarPet/:id', ensureLoggedIn(), (req, res, next) => {
+    Peticion.findByIdAndRemove(req.params.id)
+
+    .then(place=>{
+      res.redirect(`/auth/detailc/${req.user._id}`)
+    }).catch(e=>next(e))
+  });
 // router.get("/updatePeticion/:id",checkClient,(req,res,next)=>{
 //     User.findById(req.params.id)
 //     .then(user=>{
