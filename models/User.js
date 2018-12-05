@@ -46,7 +46,7 @@ const UserSchema =  new Schema({
 }, {
   timestamps: true
 });
-
+UserSchema.index({ location: '2dsphere' });
 UserSchema.plugin(passportLocalMongoose,{usernameField:'username'})
 const User = mongoose.model('User', UserSchema);
 

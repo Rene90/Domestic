@@ -64,8 +64,15 @@ router.get("/login", (req, res, next) => {
     const address = req.body.address;
     const phoneNumber = req.body.phoneNumber;
     const role = req.body.role;
-    const purl = `/pics/${req.file.filename}`
-    const pname = req.file.originalname
+    const purl = `/pics/${req.file.filename}`;
+    const pname = req.file.originalname;
+    const location ={
+        type:"Point",
+        coordinates:[
+          req.body.lng,
+          req.body.lat
+        ]
+      };
    
   
     
@@ -93,7 +100,8 @@ router.get("/login", (req, res, next) => {
         role: role,
         phoneNumber:phoneNumber,
         photoUrl: purl,
-        photoName: pname
+        photoName: pname,
+        location:location
         
       });
       console.log(newUser)
@@ -161,7 +169,14 @@ router.post('/update/:id', upload.single('photo'),(req, res, next) => {
       address:req.body.address,
       role:req.body.role,
       photoUrl: `/pics/${req.file.filename}`,
-      photoName:req.file.originalname
+      photoName:req.file.originalname,
+      location:{
+        type:"Point",
+        coordinates:[
+          req.body.lng,
+          req.body.lat
+        ]
+      }
 }
 
 
@@ -178,17 +193,26 @@ router.post('/update/:id', upload.single('photo'),(req, res, next) => {
       
     }).catch(e=>next(e))
   });
-router.get("/listae",checkClient,(req,res,next)=>{
-    User.find({role:"Electricista"}).populate('peticiones')
+router.get("/listae/:id",checkClient,(req,res,next)=>{
+    const {id} = req.params
+    User.findById(id)
+    .then(cliente=>{
+        User.find({role:"Electricista"}).populate('peticiones')
     .then(elec=>{
-        res.render('electricistas',{elec})
+        res.render('electricistas',{elec,cliente})
     }).catch(e=>next(e))
+    }).catch(e=>next(e))
+    
 
 })
-router.get("/listap",checkClient,(req,res,next)=>{
-    User.find({role:"Plomero"}).populate('peticiones')
+router.get("/listap/:id",checkClient,(req,res,next)=>{
+    const {id} = req.params
+    User.findById(id)
+    .then(cliente=>{
+        User.find({role:"Plomero"}).populate('peticiones')
     .then(plom=>{
-        res.render('plomeros',{plom})
+        res.render('plomeros',{plom,cliente})
+    }).catch(e=>next(e))
     }).catch(e=>next(e))
 
 })
@@ -342,6 +366,24 @@ router.get('/borrarCot/:id', ensureLoggedIn(), (req, res, next) => {
       res.redirect(`/auth/detailc/${req.user._id}`)
     }).catch(e=>next(e))
   });
+  router.get('/eapi', (req, res, next) => {
+	User.find({role:"Electricista"}, (error, allElecFromDB) => {
+		if (error) { 
+			next(error); 
+		} else { 
+			res.status(200).json({ users: allElecFromDB });
+		}
+	});
+});
+router.get('/papi', (req, res, next) => {
+	User.find({role:"Plomero"}, (error, allPlomFromDB) => {
+		if (error) { 
+			next(error); 
+		} else { 
+			res.status(200).json({ users: allPlomFromDB });
+		}
+	});
+});
 // router.get("/updatePeticion/:id",checkClient,(req,res,next)=>{
 //     User.findById(req.params.id)
 //     .then(user=>{
