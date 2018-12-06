@@ -65,7 +65,7 @@ router.get("/login", (req, res, next) => {
     const address = req.body.address;
     const phoneNumber = req.body.phoneNumber;
     const role = req.body.role;
-    const purl = `/pics/${req.file.filename}`;
+    const purl = req.file.url;
     const pname = req.file.originalname;
     const location ={
         type:"Point",
@@ -169,7 +169,7 @@ router.post('/update/:id', uploadCloud.single('photo'),(req, res, next) => {
       phoneNumber:req.body.phoneNumber,
       address:req.body.address,
       role:req.body.role,
-      photoUrl: `/pics/${req.file.filename}`,
+      photoUrl: req.file.url,
       photoName:req.file.originalname,
       location:{
         type:"Point",
@@ -227,7 +227,7 @@ router.post("/peticion/:id",uploadCloud.single('photo'),(req,res,next)=>{
     const peticion = new Peticion({
         titulo: req.body.titulo,
         content: req.body.content,
-        imgURL: `/pics/${req.file.filename}`,
+        imgURL: req.file.url,
         imgName: req.file.originalname,
         clientId: req.user._id,
         workerId: id
