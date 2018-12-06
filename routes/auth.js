@@ -313,7 +313,11 @@ router.post("/cotizacion/:id",(req,res,next)=>{
             .then(resul=>{
                 var message = `El usuario ${result.username} ha respondido a una solicitud que usted hizo`
                 welcomeMail(resul.email,message)
-                res.redirect(`/auth/detailt/${req.user._id}`)
+                Peticion.findByIdAndUpdate(id,{$set:{status:true}})
+                .then(peticion=>{
+                    res.redirect(`/auth/detailt/${req.user._id}`)
+                }).catch(e=>next(e))
+                
             }).catch(e=>next(e))
             
           }).catch(e=>next(e))
