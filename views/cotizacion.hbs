@@ -3,20 +3,34 @@
 <h3>Trabajo solicitado {{peti.titulo}}</h3>
 
 
-<form  action="{{action}}" id="form" method="POST" >
+<form  action="{{action}}" id="formulario" method="POST" >
   <label for="titulo">Título de la cotizacion</label>
-  <input type="text" name="titulo">
+  <input type="text" class="required" name="titulo">
   <hr>
   <label for="content">Añade descripcion a tu cotización</label>
- <textarea name="content" id="" cols="30" rows="10"></textarea>
+ <textarea name="content" class="required" id="" cols="30" rows="10"></textarea>
  <hr>
  <label for="dateService">Escoge fecha y hora de servicio</label>
- <input type="datetime-local" name="dateService">
+ <input type="datetime-local" class="required" name="dateService">
   <hr>
   <label for="precio">Precio</label>
-  <input type="number" name="precio"><br>
+  <input type="number" class="required number"name="precio"><br>
  
   
   <input type="submit" class="boton" value="Envia">
+   <div id="contenedor_errores"></div>
 </form>
 </div>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+<script type="text/javascript">
+       function validarFormulario(){
+   jQuery.validator.messages.required = 'Este campo es obligatorio.';
+   jQuery.validator.messages.number = 'Este campo debe ser num&eacute;rico.';
+   jQuery.validator.messages.email = 'La direccion de correo es incorrecta.';
+   $("#formulario").validate();
+ }
+       $(document).ready(function(){
+          validarFormulario();
+       });
+    </script>

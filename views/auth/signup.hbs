@@ -3,9 +3,9 @@
 <h2>Registra un usuario</h2>
 <p>{{message}}</p>
 
-<form  action="{{action}}" id="form" method="POST" enctype="multipart/form-data">
-  <label for="username">Usuario</label>
-  <input type="text" name="username" value="{{user.username}}">
+<form id="formulario" action="{{action}}" id="form" method="POST" enctype="multipart/form-data">
+  <label for="username" >Usuario</label>
+  <input type="text" name="username" value="{{user.username}}" class="required">
   <hr>
   <label for="role">Rol</label>
   <select name="role">
@@ -16,18 +16,18 @@
 </select>
   <hr>
   <label for="address">Dirección</label>
-  <input type="text" name="address" value="{{user.address}}">
+  <input type="text" name="address" value="{{user.address}}" class="required">
   <hr>
   <label for="phoneNumber">Teléfono</label>
-  <input type="number" name="phoneNumber" value="{{user.phoneNumber}}">
+  <input type="number" name="phoneNumber" class="required number" value="{{user.phoneNumber}}">
 <hr>
   <label for="email">Email</label>
-  <input type="email" name="email" value="{{user.email}}">
+  <input type="email" name="email" class="required email" value="{{user.email}}">
   <hr>
   
   <label for="photo" >Sube tu foto</label>
 
-  <input type="file" id="file_1" class="subarchivo"  name="photo" >
+  <input type="file" id="file_1" class="required subarchivo"  name="photo" >
   <hr>
   <label for="ventana">Ubicación</label>
   <input type="text" name="ventana" id="geo" placeholder="Ingresa una locación">
@@ -38,16 +38,29 @@
  
   <hr>
   <label for="password">Password</label>
-  <input type="password" name="password" value="{{user.password}}">
+  <input type="password" name="password" class="required password" value="{{user.password}}">
   <hr>
   
   <input class="boton" value="Registrarse"type="submit">
+  <div id="contenedor_errores"></div>
 </form>
 <div style="width:400px;height:400px;margin:10px auto" id="map"></div>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0iBJ86eZUGkhbuWhS7b4_B3-8cRYQgTQ&libraries=places"></script>
-
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.0/dist/jquery.validate.js"></script>
+<script type="text/javascript">
+       function validarFormulario(){
+   jQuery.validator.messages.required = 'Este campo es obligatorio.';
+   jQuery.validator.messages.number = 'Este campo debe ser num&eacute;rico.';
+   jQuery.validator.messages.email = 'La direccion de correo es incorrecta.';
+   $("#formulario").validate();
+ }
+       $(document).ready(function(){
+          validarFormulario();
+       });
+    </script>
 <script>
 
   function startMap() {
