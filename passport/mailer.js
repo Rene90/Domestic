@@ -15,7 +15,7 @@ function welcomeMail(email, message){
     html: `
         <h1>Domestic Online</h1>
        <p>${message}</p>
-       <a href="http://localhost:3000/">Ve al sitio de tu perfil para ver mas detalles</a>
+       <a href="https://ancient-fjord-10470.herokuapp.com/">Ve al sitio de tu perfil para ver mas detalles</a>
        
        
        
